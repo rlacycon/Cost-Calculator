@@ -3,8 +3,7 @@ function calculatePrice() {
     var discountCode = document.getElementById("discountCode").value;
 
     var inputParagraph = document.getElementById("input");
-    inputParagraph.textContent = "Input: $" + price + ", "  + discountCode;
-
+    inputParagraph.textContent = "$" + price + ", " + discountCode;
 
     var discountPercentage;
 
@@ -23,15 +22,13 @@ function calculatePrice() {
             break;
     }
 
-    var newPrice;
-    newPrice = price - (price * discountPercentage);
-
-    var savedAmount;
-    savedAmount = price * discountPercentage;
-
-    newPrice += newPrice * 0.07;
+    var priceWithTax = price + (price * 0.07);
+   
+    var discountedPrice = priceWithTax - (priceWithTax * discountPercentage);
+    
+    var savedAmount = price - discountedPrice;
 
     var endResult = document.getElementById("result");
-    endResult.innerHTML = "Your Total: $" + newPrice.toFixed(2) + "<br/>";
+    endResult.innerHTML = "Your Total: $" + discountedPrice.toFixed(2) + "<br/>";
     endResult.innerHTML += "You saved $" + savedAmount.toFixed(2) + "!";
 }
