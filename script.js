@@ -28,7 +28,9 @@ function calculatePrice() {
     
     var savedAmount = price - discountedPrice;
 
+    var roundedDownPrice = Math.floor(discountedPrice * 100) / 100;
+
     var endResult = document.getElementById("result");
-    endResult.innerHTML = "Your Total: $" + discountedPrice.toFixed(2) + "<br/>";
+    endResult.innerHTML = "Your Total: $" + roundedDownPrice.toFixed(2) + "<br/>";
     endResult.innerHTML += "You saved $" + savedAmount.toFixed(2) + "!";
 }
